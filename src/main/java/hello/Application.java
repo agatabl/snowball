@@ -62,7 +62,7 @@ public class Application {
     //return "T";
         ind ++;
 	ind = ind%tactic.length();
-    return tactic.charAt(ind).toString();;
+    return Character.toString(tactic.charAt(ind));
   }
 
 }
