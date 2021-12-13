@@ -22,7 +22,7 @@ import java.util.Random;
 @SpringBootApplication
 @RestController
 public class Application {
-  String tactic  = "FFLTLTLTTLTFLTLTTLTLTFLTTFLTTTLTLFTFLTTLFTFLTLFTFLTLTLTLTLTLTLT";
+  String tactic  = "FLTLTLTTLTFLTLTTLTLTFLTTFLTTTLTLFTFLTTLFTFLTTLFTFLTLTTLTTLTLTLTLT";
   int ind = 0;
   static class Self {
     public String href;
