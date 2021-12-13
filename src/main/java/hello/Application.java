@@ -12,7 +12,8 @@ import java.util.Random;
 @SpringBootApplication
 @RestController
 public class Application {
-
+  String tactic  = "FLTLTLTLTFLTLTLTLTFLTLTLTLTFLTLTLTLTFLTLTLTLTLTLTLT";
+  int ind = 0;
   static class Self {
     public String href;
   }
@@ -58,7 +59,10 @@ public class Application {
     System.out.println(arenaUpdate);
     // String[] commands = new String[]{"T"};
     // int i = new Random().nextInt(1);
-    return "T";
+    //return "T";
+        ind ++;
+
+    return tactic[ind];
   }
 
 }
