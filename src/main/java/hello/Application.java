@@ -61,7 +61,7 @@ public class Application {
     // int i = new Random().nextInt(1);
     //return "T";
         ind ++;
-
+	ind = ind%tactic.length();
     return tactic[ind];
   }
 
