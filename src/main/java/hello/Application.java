@@ -22,7 +22,7 @@ import java.util.Random;
 @SpringBootApplication
 @RestController
 public class Application {
-  String tactic  = "FLTLTLTTLTFLTLTTLTLTFLTTFLTTTLTLFTFLTTLFTFLTTLFTFLTLTTLTTLTLTLTLT";
+  String tactic  = "FRFLFRFLRFLRFLRFFLRFLRFFLRF";
   int ind = 0;
   static class Self {
     public String href;
@@ -95,7 +95,39 @@ public class Application {
   static class Arena {
     public List<Integer> dims;
     public Map<String, PlayerState> state;
-  }
+    
+    public boolean isPlayerAhead() {
+        PlayerState myplayer = state.get("https://34.107.174.9");
+        for (PlayerState player: state.values()) {
+            if (player != myplayer) {
+                if (myplayer.direction == "N"){
+                    if (player.x == myplayer.x && myplayer.y - player.y <= 3 && myplayer.y - player.y > 0) {
+                        return true;
+                    }
+
+                }
+                if (myplayer.direction == "S"){
+                    if (player.x == myplayer.x && player.y - myplayer.y <= 3 && player.y - myplayer.y > 0) {
+                        return true;
+                    }
+                }
+                if (myplayer.direction == "E"){
+                    if (player.y == myplayer.y && player.x - myplayer.x <= 3 && player.x - myplayer.x > 0) {
+                        return true;
+                    }
+                }
+                if (myplayer.direction == "W"){
+                    if (player.y == myplayer.y && myplayer.x - player.x <= 3 && myplayer.x - player.x > 0) {
+                        return true;
+                    }
+
+                }
+            }
+
+        }  
+return false;
+    }
+}
 
   static class ArenaUpdate {
     public Links _links;
@@ -122,9 +154,13 @@ public class Application {
     // String[] commands = new String[]{"T"};
     // int i = new Random().nextInt(1);
     //return "T";
+  
    writeCommittedStream.send(arenaUpdate.arena);
         ind ++;
 	ind = ind%tactic.length();
+    if (arenaUpdate.arena.isPlayerAhead()) {
+        return "T";
+    }
     return Character.toString(tactic.charAt(ind));
   }
 
